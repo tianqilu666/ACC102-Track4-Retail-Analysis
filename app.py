@@ -1,9 +1,8 @@
 # ACC102 Mini Assignment - Track4 Interactive Data Analysis Tool
-# Student Name: [tianqi.lu] | Student ID: [2469622]
+# Student Name: [tianqilu] | Student ID: [2469622]
 import streamlit as st
 import pandas as pd
 import numpy as np
-import matplotlib.pyplot as plt
 
 # Page configuration
 st.set_page_config(page_title="Retail Sales Analyzer", page_icon="🛒")
@@ -29,23 +28,12 @@ st.subheader("2. Total Annual Sales (Billion USD)")
 total_sales = sales_data.sum().sort_values(ascending=False)
 st.dataframe(total_sales.round(2), use_container_width=True)
 
-# Sales trend line chart
+# Native Streamlit charts (no matplotlib needed)
 st.subheader("3. Monthly Sales Trend")
-fig1, ax1 = plt.subplots(figsize=(10, 4))
-for brand in sales_data.columns:
-    ax1.plot(sales_data.index, sales_data[brand], label=brand, linewidth=2)
-ax1.legend()
-ax1.grid(alpha=0.3)
-plt.tight_layout()
-st.pyplot(fig1)
+st.line_chart(sales_data)
 
-# Annual sales comparison bar chart
 st.subheader("4. Annual Sales Comparison")
-fig2, ax2 = plt.subplots(figsize=(8, 3))
-total_sales.plot(kind="bar", ax=ax2, color=["#FF5733", "#33FF57", "#3357FF", "#FF33A6", "#F3FF33"])
-ax2.grid(axis="y", alpha=0.3)
-plt.tight_layout()
-st.pyplot(fig2)
+st.bar_chart(total_sales)
 
 # Key business insights
 st.success("5. Key Business Insights")
