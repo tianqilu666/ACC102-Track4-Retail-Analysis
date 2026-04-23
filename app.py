@@ -10,7 +10,7 @@ st.title("2025 Global Retail Sales Interactive Analysis")
 st.markdown("### ACC102 Track4 | Business Data Product")
 
 # Generate simulated retail sales data
-months = pd.date_range(start="2025-01-01", periods=12, freq="M")
+months = pd.date_range(start="2025-01-01", periods=12)
 retail_brands = ["Walmart", "Carrefour", "Costco", "Tesco", "Aldi"]
 np.random.seed(2026)
 
